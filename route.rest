@@ -1,0 +1,9 @@
+GET http://localhost:5000/api/users
+
+###
+
+GET http://localhost:5000/api/auth
+
+###
+
+GET http://localhost:5000/api/workouts

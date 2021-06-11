@@ -16,5 +16,22 @@ Content-Type: application/json
 GET http://localhost:5000/api/auth
 
 ###
-
+// Get all workouts
 GET http://localhost:5000/api/workouts
+
+###
+// Create a workout
+POST http://localhost:5000/api/workouts
+Content-Type: application/json
+
+{
+    "name": "The Best Workout 2000",
+    "date": "06-08-2021"
+
+}
+
+###
+
+DELETE http://localhost:5000/api/workouts/60c3b61db3667015780ee90f
+
+###

@@ -9,7 +9,7 @@ const WorkoutSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    exercise: [
+    exercises: [
         {
             title: {
                 type: String,

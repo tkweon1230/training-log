@@ -5,7 +5,7 @@ const WorkoutSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
     },
-    name: {
+    workoutName: {
         type: String,
         required: true
     },
@@ -15,13 +15,13 @@ const WorkoutSchema = new mongoose.Schema({
                 type: String,
                 required: true
             },
-            set: {
+            sets: {
                 type: String
             },
-            rep: {
+            reps: {
                 type: String
             },
-            note: {
+            notes: {
                 type: String
             }
 

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Workout = require('../../models/Workout');
 const User = require('../../models/User');
+const auth = require('../../middleware/auth');
 
 // @route   GET api/workouts
 // @desc    Get all workouts
@@ -21,17 +22,16 @@ router.get('/', async (req, res) => {
 // @route   POST api/workouts
 // @desc    Create a workout
 // @access  Private
-// use auth later
 
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
 
     const { name, date } = req.body;
 
     try {
 
         const workoutFields = {};
-        workoutFields.user = req.user;
-        workoutFields.name = name;
+        workoutFields.user = req.user.id;
+        workoutFields.workoutName = name;
         workoutFields.date = date;
 
         let newWorkout = new Workout(workoutFields);
@@ -46,12 +46,66 @@ router.post('/', async (req, res) => {
     }
 });
 
+// @route   PUT api/workouts/:id
+// @desc    Add exercises to a workout
+// @access  Private
+
+router.put('/:id', auth, async (req, res) => {
+
+    const { title, sets, reps, notes } = req.body;
+    const exercises = {
+        title,
+        sets,
+        reps,
+        notes
+    };
+
+
+    try {
+
+        const workout = await Workout.findById(req.params.id);
+
+        workout.exercises.unshift(exercises);
+
+        await workout.save();
+
+        res.json(workout);
+
+    } catch (err) {
+        res.status(500).json({ msg: err.message });
+        
+    }
+});
+
+// @route   DELETE api/workouts/:workout_id/:exercise_id
+// @desc    Delete an exercise
+// @access  Private
+
+
+router.delete('/:workout_id/:exercise_id', auth, async (req, res) => {
+    try {
+        const workout = await Workout.findById(req.params.workout_id);
+        // Get remove index
+        const removeIndex = workout.exercises.map(item => item.id).indexOf(req.params.exercise_id);
+        workout.exercises.splice(removeIndex, 1);
+
+
+        await workout.save();
+
+        res.json(workout);
+
+    } catch (err) {
+        res.status(500).json({ msg: err.message });
+        
+    }
+});
+
 // @route   DELETE api/workouts/:id
 // @desc    Delete a workout
 // @access  Private
-// use auth later
 
-router.delete('/:id', async (req, res) => {
+
+router.delete('/:id', auth, async (req, res) => {
     try {
         const workout = await Workout.findById(req.params.id);
         

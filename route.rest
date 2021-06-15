@@ -3,17 +3,35 @@ GET http://localhost:5000/api/users
 
 ###
 // Create a new user
+// Gives back a token
 POST http://localhost:5000/api/users
 Content-Type: application/json
 
 {
-    "name": "Tae Kweon",
-    "email": "taekweon@gmail.com"
+    "name": "tae",
+    "email": "tae@gmail.com",
+    "password": "123456"
 }
 
 ###
 
+// Delete a user by ID
+DELETE http://localhost:5000/api/users/60c7df5427b12e2624539638
+
+###
+// Login user and grab token
+POST http://localhost:5000/api/auth
+Content-Type: application/json
+
+{
+    "email": "dude@gmail.com",
+    "password": "123456"
+}
+
+###
+// Get user by token
 GET http://localhost:5000/api/auth
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjBjN2UyYmVhNWUyMzQxN2QwMTg5YWZlIn0sImlhdCI6MTYyMzcxMjY3NSwiZXhwIjoxNjI3MzEyNjc1fQ.EkY5-8Snwi9ukMUITFXhKo8sLWa3nZKHcanjcpe3Y44
 
 ###
 // Get all workouts
@@ -23,15 +41,36 @@ GET http://localhost:5000/api/workouts
 // Create a workout
 POST http://localhost:5000/api/workouts
 Content-Type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjBjN2UyYmVhNWUyMzQxN2QwMTg5YWZlIn0sImlhdCI6MTYyMzcxMjY3NSwiZXhwIjoxNjI3MzEyNjc1fQ.EkY5-8Snwi9ukMUITFXhKo8sLWa3nZKHcanjcpe3Y44
 
 {
-    "name": "The Best Workout 2000",
-    "date": "06-08-2021"
+    "name": "BEST WORKOUT",
+    "date": "06-14-2021"
 
 }
 
 ###
+// Update workout with exercises by id
+PUT http://localhost:5000/api/workouts/60c80054202b7626a8cc3f6d
+Content-Type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjBjN2UyYmVhNWUyMzQxN2QwMTg5YWZlIn0sImlhdCI6MTYyMzcxMjY3NSwiZXhwIjoxNjI3MzEyNjc1fQ.EkY5-8Snwi9ukMUITFXhKo8sLWa3nZKHcanjcpe3Y44
 
-DELETE http://localhost:5000/api/workouts/60c3b61db3667015780ee90f
+{
+    "title": "flips",
+    "sets": "3",
+    "reps": "6-8",
+    "notes": "Really easy"
+}
 
+###
+// Delete an exercise by id
+DELETE http://localhost:5000/api/workouts/60c80054202b7626a8cc3f6d/60c8005d202b7626a8cc3f79
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjBjN2UyYmVhNWUyMzQxN2QwMTg5YWZlIn0sImlhdCI6MTYyMzcxMjY3NSwiZXhwIjoxNjI3MzEyNjc1fQ.EkY5-8Snwi9ukMUITFXhKo8sLWa3nZKHcanjcpe3Y44
+
+
+
+###
+// Delete a workout by id
+DELETE http://localhost:5000/api/workouts/60c7da3ff699c70d9c9f89c2
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjBjN2UyYmVhNWUyMzQxN2QwMTg5YWZlIn0sImlhdCI6MTYyMzcxMjY3NSwiZXhwIjoxNjI3MzEyNjc1fQ.EkY5-8Snwi9ukMUITFXhKo8sLWa3nZKHcanjcpe3Y44
 ###

@@ -41,10 +41,10 @@ GET http://localhost:5000/api/workouts
 // Create a workout
 POST http://localhost:5000/api/workouts
 Content-Type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjBjN2UyYmVhNWUyMzQxN2QwMTg5YWZlIn0sImlhdCI6MTYyMzcxMjY3NSwiZXhwIjoxNjI3MzEyNjc1fQ.EkY5-8Snwi9ukMUITFXhKo8sLWa3nZKHcanjcpe3Y44
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjBjN2UyYmVhNWUyMzQxN2QwMTg5YWZlIn0sImlhdCI6MTYyNDQ3NjM1OSwiZXhwIjoxNjI4MDc2MzU5fQ.Bjy90HF1Gry6vD285vPJ3UTLnTOqzkpSaUa-pixaIrA
 
 {
-    "name": "BEST WORKOUT",
+    "name": "MY BEST",
     "date": "06-14-2021"
 
 }

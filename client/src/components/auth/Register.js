@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 
 
-export const Register = ({ register }) => {
+export const Register = ({ register, isAuthenticated }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -21,6 +21,10 @@ export const Register = ({ register }) => {
     const onSubmit = e => {
         e.preventDefault();
         register({ name, email, password });
+    };
+
+    if(isAuthenticated){
+      return <Redirect to="/dashboard" />;
     }
 
     return (
@@ -67,7 +71,12 @@ export const Register = ({ register }) => {
     )
 }
 Register.propTypes = {
-    register: PropTypes.func.isRequired
+    register: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool
 }
 
-export default connect(null, { register})(Register);
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { register})(Register);

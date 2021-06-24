@@ -8,3 +8,6 @@ export const LOGOUT = 'LOGOUT';
 export const GET_USER = 'GET_USER';
 export const USER_ERROR = 'USER_ERROR';
 export const CLEAR_USER = 'CLEAR_USER';
+export const GET_WORKOUT = 'GET_WORKOUT';
+export const WORKOUT_ERROR = 'WORKOUT_ERROR';
+export const CLEAR_WORKOUT = 'CLEAR_WORKOUT';

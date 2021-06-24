@@ -4,6 +4,26 @@ const Workout = require('../../models/Workout');
 const User = require('../../models/User');
 const auth = require('../../middleware/auth');
 
+// @route   GET api/workouts/me
+// @desc    Get current users workout
+// @access  Private
+router.get('/me', auth, async (req, res) => {
+    try {
+        const workout = await Workout.find({ user: req.user.id }).populate('user', 
+        'name');
+
+        if(!workout) {
+            return res.status(400).json({ msg: 'There is no workout for this user' });
+        }
+        
+        res.json(workout);
+
+    } catch (err) {
+        res.status(500).json({ msg: err.message });
+    }
+    
+});
+
 // @route   GET api/workouts
 // @desc    Get all workouts
 // @access  Public

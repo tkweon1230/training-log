@@ -5,11 +5,11 @@ import {
     USER_ERROR
 } from './types';
 
-// Get user
+// Get current user's workouts
 export const getUser = () => async dispatch => {
     try {
-        const res = await axios.get('/api/workouts/');
-
+        const res = await axios.get('/api/workouts/me');
+        console.log(res)
         dispatch({
             type: GET_USER,
             payload: res.data

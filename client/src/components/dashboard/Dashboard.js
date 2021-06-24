@@ -16,23 +16,29 @@ export const Dashboard = ({ getUser, auth: { user }, workout }) => {
         <p>
             { user && user.name }'s Training log
         </p>
+        
+        {user.workout !== null ? (
+            <Fragment>has</Fragment>
+        ): (
+              
         <Fragment>
-            <p> Create a workout </p>
                 <Link to='/create-workout' className="btn btn-primary my-1">
                  Create a Workout
                 </Link>
         </Fragment>
+
+        )}
     </Fragment>     
 };
 
 Dashboard.propTypes = {
     getUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
-    user: PropTypes.object.isRequired
+    workout: PropTypes.object.isRequired
 }
 const mapStateToProps = state => ({
     auth: state.auth,
-    user: state.user
+    workout: state.user
 })
 
 export default connect(mapStateToProps, { getUser })(Dashboard);

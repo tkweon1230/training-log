@@ -38,6 +38,11 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjBjN2UyY
 GET http://localhost:5000/api/workouts
 
 ###
+// Get current user's workouts
+GET http://localhost:5000/api/workouts/me
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjBjN2UyYmVhNWUyMzQxN2QwMTg5YWZlIn0sImlhdCI6MTYyNDU2NzExOSwiZXhwIjoxNjI4MTY3MTE5fQ.89OmJRWbjG6zeP2fdW5P6bUiITX4fmLc8ggRNKqwrnw
+
+###
 // Create a workout
 POST http://localhost:5000/api/workouts
 Content-Type: application/json

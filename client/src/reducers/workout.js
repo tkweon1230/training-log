@@ -1,4 +1,4 @@
-import { GET_WORKOUT, WORKOUT_ERROR, CLEAR_WORKOUT } from "../actions/types";
+import { GET_WORKOUT, WORKOUT_ERROR, CLEAR_WORKOUT, WORKOUT_LOADED} from "../actions/types";
 
 const initialState = {
     workout: null,
@@ -12,6 +12,7 @@ const { type, payload } = action;
 
 switch(type) {
     case GET_WORKOUT:
+    case WORKOUT_LOADED:
     //case UPDATE_WORKOUT:
         return {
             ...state,

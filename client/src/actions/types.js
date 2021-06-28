@@ -11,3 +11,4 @@ export const CLEAR_USER = 'CLEAR_USER';
 export const GET_WORKOUT = 'GET_WORKOUT';
 export const WORKOUT_ERROR = 'WORKOUT_ERROR';
 export const CLEAR_WORKOUT = 'CLEAR_WORKOUT';
+export const WORKOUT_LOADED = 'WORKOUT_LOADED';

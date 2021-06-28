@@ -2,16 +2,17 @@ import axios from 'axios';
 
 import {
     GET_USER,
-    USER_ERROR
+    USER_ERROR,
+    WORKOUT_LOADED
 } from './types';
 
 // Get current user's workouts
 export const getUser = () => async dispatch => {
     try {
         const res = await axios.get('/api/workouts/me');
-        console.log(res)
+     
         dispatch({
-            type: GET_USER,
+            type: WORKOUT_LOADED,
             payload: res.data
         })
     } catch (err) {

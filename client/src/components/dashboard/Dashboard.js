@@ -17,9 +17,7 @@ export const Dashboard = ({ getUser, auth: { user }, workout }) => {
             { user && user.name }'s Training log
         </p>
         
-        {user.workout !== null ? (
-            <Fragment>has</Fragment>
-        ): (
+    
               
         <Fragment>
                 <Link to='/create-workout' className="btn btn-primary my-1">
@@ -27,7 +25,7 @@ export const Dashboard = ({ getUser, auth: { user }, workout }) => {
                 </Link>
         </Fragment>
 
-        )}
+    
     </Fragment>     
 };
 

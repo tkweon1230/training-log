@@ -9,10 +9,10 @@ export const createWorkout = (formData, history, edit = false) => async dispatch
     try {
         const config = {
             headers: {
-                'Content-type': 'application/json'
+                'Content-Type': 'application/json'
             }
         }
-        const res = await axios.post('/api/workouts/', formData, config);
+        const res = await axios.post('/api/workouts', formData, config);
         console.log("Here")
         dispatch({
             type: GET_WORKOUT,
